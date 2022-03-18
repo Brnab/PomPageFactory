@@ -1,7 +1,7 @@
 package co.com.sofka.page.practiceForm;
 
-import co.com.sofka.page.common.actionOnPages;
 import co.com.sofka.model.Register.pageModelRegister;
+import co.com.sofka.page.common.actionOnPages;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 public class formRegister extends actionOnPages {
     private static final Logger LOGGER = Logger.getLogger(formRegister.class);
     private  pageModelRegister pageModelRegister;
+    public String Texto;
 
     @FindBy(id = "customer.firstName")
     private WebElement firstName;
@@ -48,10 +49,14 @@ public class formRegister extends actionOnPages {
     @FindBy(xpath = "//input[@value='Register']")
     private WebElement register;
 
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[3]/div[2]/h1[1]")
+    private WebElement text;
+
+
 
 
     public formRegister(WebDriver driver, pageModelRegister pageModelRegister) {
-        super(driver);
+        super(driver, 10, true);
         pageFactoryInitElement(driver, this);
         this.pageModelRegister = pageModelRegister;
     }
@@ -59,8 +64,8 @@ public class formRegister extends actionOnPages {
     // funcionalidades de la pagina
 public void llenarcampos() throws InterruptedException {
     scrollOn(firstName);
-    clickOn(firstName);
-    clearOn(firstName);
+    withExplicitWaitClickOn(firstName);
+    withExplicitWaitClearOn(firstName);
     typeOn(firstName, pageModelRegister.getFirstName());
 
     scrollOn(lastName);
@@ -114,9 +119,16 @@ public void llenarcampos() throws InterruptedException {
     doSubmit(register);
 
 
+
+
+
 }
 
+    public String Retornar() {
+        scrollOn(text);
+        return  this.Texto = getText(text);
 
+    }
 
 
 

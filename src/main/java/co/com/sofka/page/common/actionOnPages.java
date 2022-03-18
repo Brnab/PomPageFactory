@@ -6,6 +6,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 public class actionOnPages {
 
@@ -28,7 +33,54 @@ public class actionOnPages {
             LOGGER.warn(e.getMessage(), e);
         }
     }
+    // tiempo explicito
+    private WebDriverWait webDriverExplicitWait;
+    // configurar el tiempo explicito
+    private void setWebDriverExplicitWait(WebDriver driver, int seconds){
+        try{
+            webDriverExplicitWait = new WebDriverWait(driver, seconds);
 
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage(), e);
+        }
+    }
+
+    public actionOnPages(WebDriver driver, int seconds) {
+        try{
+            if(driver == null)
+                LOGGER.warn(WEBDRIVER_NULL_MESSAGE);
+
+                setWebDriverExplicitWait(driver, seconds);
+
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage(), e);
+        }
+    }
+
+    private void webDriverImplicitWait(WebDriver driver, int seconds){
+        try{
+            driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage(), e);
+        }
+    }
+
+    public actionOnPages(WebDriver driver, int seconds, boolean explicitTime) {
+        try{
+            if(driver == null)
+                LOGGER.warn(WEBDRIVER_NULL_MESSAGE);
+
+            this.driver = driver;
+
+            if(explicitTime)
+                setWebDriverExplicitWait(driver, seconds);
+            else
+                webDriverImplicitWait(driver, seconds);
+
+        } catch (Exception e){
+            LOGGER.warn(e.getMessage(), e);
+        }
+    }
 
     // inicializacion de POM con page factory
     protected void pageFactoryInitElement(WebDriver driver, Object page){
@@ -37,6 +89,13 @@ public class actionOnPages {
 
 
     //funcionalidades
+    protected void withExplicitWaitClearOn(WebElement webElement){
+        webDriverExplicitWait.until(elementToBeClickable(webElement)).clear();
+    }
+    protected void withExplicitWaitClickOn(WebElement webElement){
+        webDriverExplicitWait.until(elementToBeClickable(webElement)).click();
+
+    }
     protected void clearOn(WebElement webElement){
         webElement.clear();
     }
@@ -52,6 +111,10 @@ public class actionOnPages {
 
     protected void doSubmit(WebElement webElement){
         webElement.submit();
+    }
+
+    protected String getText(WebElement webElement){
+        return webElement.getText();
     }
 
 
