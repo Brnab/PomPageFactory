@@ -7,11 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static co.com.sofka.util.Log4jValues.LOG4J_PROPERTIES_FILE_PATH;
 import static com.google.common.base.StandardSystemProperty.USER_DIR;
 
-public class webUiContactUs {
+public class webUILogIn {
     private static final String WEBDRIVER_CHROME_DRIVER = "webdriver.chrome.driver";
     private static final String WEBDRIVER_CHROME_DRIVER_PATH = "src/test/resources/driver/chromedriver.exe";
 
-    private static final String CONTACT_PARABANK = "https://parabank.parasoft.com/parabank/contact.htm";
+    private static final String LOGIN_PARABANK = "https://parabank.parasoft.com/parabank/index.htm";
 
     protected WebDriver driver;
 
@@ -21,7 +21,7 @@ public class webUiContactUs {
 
     protected void generalSetUp(){
         driver = new ChromeDriver();
-        driver.get(CONTACT_PARABANK);
+        driver.get(LOGIN_PARABANK);
         driver.manage().window().maximize();
     }
 
