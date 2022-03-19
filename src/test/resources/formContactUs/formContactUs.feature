@@ -7,3 +7,7 @@ Feature: Yo como usuario del banco
     When el usuario llena todos campos necesarios y presiona enviar
     Then el mensaje debe ser enviado
 
+  Scenario: Ingreso incorrecto de los campos a llenar
+    Given el usuario esta en la pagina para contactarse
+    When el usuario no llena el mensaje a enviar
+    Then el sistema debe pedir que se escriba un mensaje

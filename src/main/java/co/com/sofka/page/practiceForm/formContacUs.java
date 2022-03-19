@@ -32,6 +32,9 @@ public class formContacUs extends actionOnPages {
     @FindBy(xpath = "//h1[contains(text(),'Customer Care')]")
     private WebElement text;
 
+    @FindBy(xpath = "//span[@id='message.errors']")
+    private WebElement text2;
+
 
     public formContacUs(WebDriver driver, pageModelContactUs pageModelContactUs) {
         super(driver, 10, true);
@@ -67,6 +70,37 @@ public class formContacUs extends actionOnPages {
 
             scrollOn(text);
             pageModelContactUs.setTexto(getText(text));
+
+
+    }
+
+    public void llenarcampos2() throws InterruptedException {
+        scrollOn(name);
+        withExplicitWaitClickOn(name);
+        withExplicitWaitClearOn(name);
+        typeOn(name, pageModelContactUs.getName());
+
+        scrollOn(email);
+        clickOn(email);
+        clearOn(email);
+        typeOn(email, pageModelContactUs.getEmail());
+
+
+        scrollOn(phone);
+        clickOn(phone);
+        clearOn(phone);
+        typeOn(phone, pageModelContactUs.getPhone());
+
+        scrollOn(message);
+        clickOn(message);
+        clearOn(message);
+        typeOn(message, pageModelContactUs.getMessage());
+
+        doSubmit(submit);
+
+
+        scrollOn(text);
+        pageModelContactUs.setTexto2(getText(text2));
 
 
     }

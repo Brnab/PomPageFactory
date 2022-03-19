@@ -7,7 +7,7 @@ public class pageModelContactUs {
     private String phone;
     private String message;
     private String Texto;
-
+    private String Texto2;
 
     public String getName() {
         return name;
@@ -47,5 +47,13 @@ public class pageModelContactUs {
 
     public void setTexto(String texto) {
         Texto = texto;
+    }
+
+    public String getTexto2() {
+        return Texto2;
+    }
+
+    public void setTexto2(String texto2) {
+        Texto2 = texto2;
     }
 }

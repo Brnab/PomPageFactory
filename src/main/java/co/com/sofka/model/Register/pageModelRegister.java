@@ -13,6 +13,9 @@ public class pageModelRegister {
     private String userName;
     private String passWord;
     private String confirmPass;
+    private String Texto;
+    private String Texto2;
+
 
 
     public String getFirstName() {
@@ -101,5 +104,21 @@ public class pageModelRegister {
 
     public void setConfirmPass(String confirmPass) {
         this.confirmPass = confirmPass;
+    }
+
+    public String getTexto() {
+        return Texto;
+    }
+
+    public void setTexto(String texto) {
+        Texto = texto;
+    }
+
+    public String getTexto2() {
+        return Texto2;
+    }
+
+    public void setTexto2(String texto2) {
+        Texto2 = texto2;
     }
 }
