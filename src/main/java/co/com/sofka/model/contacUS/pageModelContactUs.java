@@ -4,7 +4,9 @@ public class pageModelContactUs {
 
     private String name;
     private String email;
+    private String phone;
     private String message;
+    private String Texto;
 
 
     public String getName() {
@@ -29,5 +31,21 @@ public class pageModelContactUs {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getTexto() {
+        return Texto;
+    }
+
+    public void setTexto(String texto) {
+        Texto = texto;
     }
 }

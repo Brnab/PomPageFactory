@@ -7,3 +7,7 @@ Feature: Yo como usuario del banco
     When lleno los campos obligatorios y presiono registrar
     Then el sistema debe crear la cuenta
 
+Scenario: llenado incorrecto de los campos
+  Given dado que me encuentro en la pagina web
+  When no lleno todos los campos obligatorios
+  Then el sistema deberia dar ereror
