@@ -56,4 +56,4 @@ Se realizará la entrega de los resultados de las pruebas a mas tardar el dia lu
 
 **Acuerdos.**
 
-No se tendrán en cuenta cualquier otra puerta que esté por fuera de los criterios de aceptación.
+No se tendrán en cuenta cualquier otra prueba que esté por fuera de los criterios de aceptación.
